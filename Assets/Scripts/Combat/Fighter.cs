@@ -32,17 +32,26 @@ namespace RPG.Combat
 
             if (!GetIsInRange())
             {
-                mover.MoveTo(target.transform.position);
+                mover.MoveTo(target.transform.position);               
             }
             else
             {
-                mover.Cancel();            
+                mover.Cancel();                   
                 AttackBehaviour();                
             }
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if(combatTarget == null) return false;
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
+        }
+
         private void AttackBehaviour()
-        {          
+        {
+            transform.LookAt(target.transform, Vector3.up);
+
             if(timeSinceLastAttack >= timeBetweenAttacks)
             {
                 //this will trigger the hit event.
