@@ -1,6 +1,5 @@
 using UnityEngine;
 using RPG.Movement;
-using System;
 using RPG.Combat;
 
 namespace RPG.Control
@@ -27,12 +26,14 @@ namespace RPG.Control
             RaycastHit [] hits = Physics.RaycastAll(GetMouseRay());
             foreach(RaycastHit hit in hits)
             {                
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();                
-                if(!fighter.CanAttack(target))  continue;   
-                                     
+                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+
+                if(target == null) continue;             
+                if(!fighter.CanAttack(target.gameObject))  continue;                                       
+        
                 if(Input.GetMouseButtonDown(0))
                 {
-                    fighter.Attack(target);                    
+                    fighter.Attack(target.gameObject);                    
                 }
                 return true;                
             }
