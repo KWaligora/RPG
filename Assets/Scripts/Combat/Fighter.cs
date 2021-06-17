@@ -14,7 +14,7 @@ namespace RPG.Combat
         private Mover mover;
         private Animator animator;
 
-        private float timeSinceLastAttack = 0;
+        private float timeSinceLastAttack = Mathf.Infinity;
         
         private void Start() {
             mover = GetComponent<Mover>();
