@@ -8,6 +8,7 @@ namespace RPG.Movement
     {
         private NavMeshAgent navMesh;
         private Health health;
+        [SerializeField] float maxSpeed = 6f;
 
         private void Start()
         {
@@ -21,15 +22,16 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
-        public void StartMoveAction(Vector3 destination) //With canceling fight
+        public void StartMoveAction(Vector3 destination, float speedFraction) //With canceling fight
         {            
             GetComponent<ActionScheduler>().StartAction(this);
-            MoveTo(destination);
+            MoveTo(destination, speedFraction);
         }
 
-        public void MoveTo(Vector3 destination) //without canceling fight
+        public void MoveTo(Vector3 destination, float speedFraction) //without canceling fight
         {
             navMesh.destination = destination;
+            navMesh.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             navMesh.isStopped = false;
         }
 
