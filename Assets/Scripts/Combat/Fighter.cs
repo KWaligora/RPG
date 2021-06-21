@@ -18,8 +18,7 @@ namespace RPG.Combat
         
         private void Start() {
             mover = GetComponent<Mover>();
-            animator = GetComponent<Animator>();
-            
+            animator = GetComponent<Animator>();            
         }
 
         private void Update()
@@ -89,6 +88,7 @@ namespace RPG.Combat
         {
             target = null;
             StopAttack();
+            GetComponent<Mover>().Cancel();
         }
 
         private void StopAttack()
