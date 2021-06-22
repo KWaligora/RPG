@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!135 &1714768704921872293
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569823024720765442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 1.3, z: 0}
 --- !u!114 &-5517756042073891639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +82,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4557396579403462846, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557396579403462846, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
