@@ -96,7 +96,6 @@ namespace RPG.Combat
         {
             if(target == null) return;
             currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
-            target.TakeDamage(currentWeapon.GetDamage());
         }
 
         private bool GetIsInRange()
