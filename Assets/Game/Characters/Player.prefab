@@ -93,6 +93,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4997233267524965619, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 684a08e3391d9774e9211a0a73092c0e, type: 2}
+    - target: {fileID: 4997233267524965619, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
       propertyPath: weaponPrefab
       value: 
       objectReference: {fileID: 5319657769970374754, guid: a9617b8f28b38c04b8da389b6421cf52, type: 3}
@@ -100,6 +104,10 @@ PrefabInstance:
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 554255685357126414}
+    - target: {fileID: 4997233267524965619, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
+      propertyPath: weaponOverride
+      value: 
+      objectReference: {fileID: 22100000, guid: abd386fd379aaf543923e2b3d4a7f0e6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
 --- !u!1 &4569823024720765442 stripped
