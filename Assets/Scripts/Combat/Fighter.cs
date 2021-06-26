@@ -9,12 +9,14 @@ namespace RPG.Combat
     {
         
         [SerializeField] private float timeBetweenAttacks = 1f;        
-        [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
+        [SerializeField] Weapon defaultWeapon = null;
 
         private Health target;
         private Mover mover;
         private Animator animator;
+        private Weapon currentWeapon = null;
 
         private float timeSinceLastAttack = Mathf.Infinity;
         
@@ -22,7 +24,7 @@ namespace RPG.Combat
         {
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();  
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -44,10 +46,10 @@ namespace RPG.Combat
             }
         }
 
-        private void SpawnWeapon()
-        {           
-            if(weapon == null) return;
-            else weapon.Spawn(handTransform, animator);
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;           
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -86,12 +88,20 @@ namespace RPG.Combat
         private void Hit()
         {        
             if(target == null) return;  
-            target.TakeDamage(weapon.GetDamage());
+            target.TakeDamage(currentWeapon.GetDamage());
+        }
+
+        //Animation Event
+        private void Shoot()
+        {
+            if(target == null) return;
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            target.TakeDamage(currentWeapon.GetDamage());
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weapon.GetRange();
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
         }
 
         public void Cancel()
