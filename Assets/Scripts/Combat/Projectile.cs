@@ -8,6 +8,7 @@ namespace RPG.Combat
         Health target = null;
         [SerializeField] float speed = 2f;
         [SerializeField] bool isHoming = true;
+        [SerializeField] GameObject hitEffect = null;
         float damage = 0;
 
         GameObject player;
@@ -38,12 +39,17 @@ namespace RPG.Combat
         }
 
         private void OnTriggerEnter(Collider other)
-        {
-            if(other.gameObject.tag == "Player") return;
-            Health target = other.GetComponent<Health>();
-            if (target == null || target.IsDead()) return;
+        {            
+            if(other.GetComponent<Health>() != target) return;
+            if(target.IsDead()) return;
 
             target.TakeDamage(damage);
+
+            if(hitEffect != null)
+            {
+                Instantiate(hitEffect, GetAimLocation(), transform.rotation);
+            }
+
             Destroy(gameObject);
         }
     }
