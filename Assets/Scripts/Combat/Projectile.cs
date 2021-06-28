@@ -39,6 +39,7 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other)
         {
+            if(other.gameObject.tag == "Player") return;
             Health target = other.GetComponent<Health>();
             if (target == null || target.IsDead()) return;
 
