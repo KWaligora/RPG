@@ -95,14 +95,14 @@ namespace RPG.Combat
         private void Hit()
         {        
             if(target == null) return;  
-            target.TakeDamage(currentWeapon.GetDamage());
+            target.TakeDamage(gameObject, currentWeapon.GetDamage());
         }
 
         //Animation Event
         private void Shoot()
         {
             if(target == null) return;
-            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
         }
 
         private bool GetIsInRange()
