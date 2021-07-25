@@ -21,7 +21,7 @@ namespace RPG.Combat
 
         private float timeSinceLastAttack = Mathf.Infinity;
         
-        private void Start() 
+        private void Awake() 
         {
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();  
