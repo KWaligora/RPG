@@ -42,7 +42,7 @@ namespace RPG.Stats
 
         public int GetStat(Stat stat)
         {
-            return progression.GetStat(stat, characterClass, startingLevel);
+            return progression.GetStat(stat, characterClass, GetLevel());
         }
 
         public int GetLevel()

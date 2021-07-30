@@ -3,6 +3,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -93,16 +94,18 @@ namespace RPG.Combat
 
         //Animation Event
         private void Hit()
-        {        
+        {
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);            
             if(target == null) return;  
-            target.TakeDamage(gameObject, currentWeapon.GetDamage());
+            target.TakeDamage(gameObject, damage);
         }
 
         //Animation Event
         private void Shoot()
-        {
+        {            
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             if(target == null) return;
-            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
         }
 
         private bool GetIsInRange()
