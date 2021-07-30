@@ -30,7 +30,7 @@ namespace RPG.Resources
 
         private void RegenerateHealth()
         {
-            int regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * regenerationPercentage / 100;
+            int regenHealthPoints = (int)GetComponent<BaseStats>().GetStat(Stat.Health) * regenerationPercentage / 100;
             healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
         }
 
@@ -75,7 +75,7 @@ namespace RPG.Resources
             Experience experience = instigator.GetComponent<Experience>();
             if(experience == null) return;
 
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+            experience.GainExperience((int)GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         public float GetHealthPoints()
