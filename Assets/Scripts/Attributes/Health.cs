@@ -4,6 +4,7 @@ using RPG.Stats;
 using RPG.Core;
 using GameDevTV.Utils;
 using UnityEngine.Events;
+using System;
 
 namespace RPG.Attributes
 {
@@ -33,6 +34,11 @@ namespace RPG.Attributes
         private float GetInitialValue()
         {
             return GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
+
+        public void Heal(float healthToRestore)
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
         }
 
         private void OnEnable() 
