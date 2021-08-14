@@ -93,7 +93,6 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
-
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform, Vector3.up);
