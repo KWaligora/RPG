@@ -6,21 +6,26 @@ namespace RPG.UI
     {
         [SerializeField] 
         GameObject UI;
-        bool Hidden = true;
+        bool hidden = true;
+
+        private void Start() 
+        {
+            UI.SetActive(false);   
+        }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                if(Hidden)
+                if(hidden)
                 {
                     UI.SetActive(true);
-                    Hidden = false;
+                    hidden = false;
                 }
                 else
                 {
                     UI.SetActive(false);
-                    Hidden = true;
+                    hidden = true;
                 }
             }
         }
