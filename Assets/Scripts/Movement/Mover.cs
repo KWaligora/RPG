@@ -26,7 +26,7 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
-        public void StartMoveAction(Vector3 destination, float speedFraction) //With canceling fight
+        public void StartMoveAction(Vector3 destination, float speedFraction) // With canceling fight
         {            
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination, speedFraction);

@@ -119,7 +119,6 @@ namespace RPG.Combat
             if(currentWeapon.value != null)
             {
                 currentWeapon.value.OnHit();
-                print("dziala");
             }
             target.TakeDamage(gameObject, damage);
         }
@@ -132,7 +131,6 @@ namespace RPG.Combat
             if (currentWeapon.value != null)
             {
                 currentWeapon.value.OnHit();
-                print("dziala");
             }
             currentWeaponConfig.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
         }
