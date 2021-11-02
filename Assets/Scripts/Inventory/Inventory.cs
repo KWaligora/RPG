@@ -24,9 +24,26 @@ namespace RPG.InventorySystem
 
         public bool AddItem(IInventoryItemData itemData)
         {            
-            inventorySlots[0].SetItem(itemData);
+            InventorySlot slot = GetFirstEmptySlot();
 
-            return true;
+            if(slot != null)
+            {
+                slot.SetItem(itemData);
+                return true;
+            }
+            return false;
+        }
+
+        private InventorySlot GetFirstEmptySlot()
+        {
+            foreach(InventorySlot slot in inventorySlots)
+            {
+                if(slot.isEmpty())
+                {
+                    return slot;
+                }
+            }
+            return null;
         }
     }
 }

@@ -26,5 +26,11 @@ namespace RPG.InventorySystem
         {
             return itemData;
         }
+
+        public bool isEmpty()
+        {
+            if (itemData == null) return true;
+            return false;
+        }
     }
 }
