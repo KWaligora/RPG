@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4080564679234192902}
   - component: {fileID: 9115841028021714975}
   - component: {fileID: 3280392021259845295}
+  - component: {fileID: 3761530184988808816}
   m_Layer: 5
   m_Name: InventoryItem
   m_TagString: Untagged
@@ -88,6 +89,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb7c77a4dce254082f44ee847da7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &3761530184988808816
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554948683626966419}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6214636820012818379
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +113,7 @@ GameObject:
   - component: {fileID: 7987949645720899473}
   - component: {fileID: 6550309483746471043}
   - component: {fileID: -5411294347679633314}
+  - component: {fileID: 2866952711746067206}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -175,5 +189,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b8c4b58e6ef8346bc3f3fef8744f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2866952711746067206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6214636820012818379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3971579e9b44b04a95eb177c3f7411d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
