@@ -1,20 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Inventory.UI
+namespace RPG.InventorySystem.UI
 {
     public class InventoryUI : MonoBehaviour
-    {
-        [SerializeField] int inventorySize = 36;
-        [SerializeField] GameObject inventorySlotPrefab;
+    {        
+        [SerializeField] InventorySlot inventorySlotPrefab;
         [SerializeField] Transform itemsContainer;
 
-        private void Start() 
-        {
-            for(int i = 0; i < inventorySize; i++)
+        // Add slots to inventoryUI and to inventory list
+        public void CreateItemSlots(int inventorySize, ref List<InventorySlot> List)
+        {            
+            for (int i = 0; i < inventorySize; i++)
             {
-                Instantiate<GameObject>(inventorySlotPrefab, itemsContainer);
+               List.Add(Instantiate<InventorySlot>(inventorySlotPrefab, itemsContainer));
             }
         }
     }

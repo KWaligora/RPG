@@ -1,36 +1,31 @@
 using System.Collections;
 using UnityEngine;
 using RPG.Control;
-using RPG.Attributes;
+using RPG.InventorySystem;
 
 namespace RPG.Combat
 {
-    public class WeaponPickup : MonoBehaviour, IRaycastable
+    public class ItemPickup : MonoBehaviour, IRaycastable
     {
-        [SerializeField] WeaponConfig weapon;
+        [SerializeField] WeaponConfig item;
         [SerializeField] float HealthToRestore = 0;
         [SerializeField] float respawnTime = 5;
+        [SerializeField] Inventory inventory;
 
         private void OnTriggerEnter(Collider other) 
         {
             if(other.gameObject.tag == "Player")
-            {
+            {               
                 Pickup(other.gameObject);
             }
         }
 
         private void Pickup(GameObject subject)
         {
-            if(weapon != null)
-            {
-                subject.GetComponent<Fighter>().EquipWeapon(weapon);
+            if(item != null)
+            {              
+                inventory.AddItem(item);
             }
-
-            if(HealthToRestore > 0)
-            {
-                subject.GetComponent<Health>().Heal(HealthToRestore);
-            }
-
             StartCoroutine(HideForSeconds(respawnTime));
         }
 

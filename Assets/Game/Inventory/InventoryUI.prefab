@@ -347,8 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cb146884d5f4746a4f5fd4e3b27e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 36
-  inventorySlotPrefab: {fileID: 6214636820012818379, guid: 2ca56aaaf2ca89b48805b18388111fdc, type: 3}
+  inventorySlotPrefab: {fileID: -5411294347679633314, guid: 2ca56aaaf2ca89b48805b18388111fdc, type: 3}
   itemsContainer: {fileID: 6679602630104979073}
 --- !u!1 &2562635170491151413
 GameObject:

@@ -1,10 +1,11 @@
 using RPG.Attributes;
 using UnityEngine;
+using RPG.InventorySystem;
 
 namespace RPG.Combat
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
-    public class WeaponConfig : ScriptableObject
+    public class WeaponConfig : ScriptableObject, IInventoryItemData
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equipedPrefab = null;
@@ -13,12 +14,12 @@ namespace RPG.Combat
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
+        [SerializeField] Sprite ItemIcon;
 
         const string weaponName = "Weapon";
 
         public Weapon Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
         {
-
             DestroyOldWeapon(rightHandTransform, leftHandTransform);
 
             Weapon weapon = null;
@@ -89,6 +90,11 @@ namespace RPG.Combat
             Transform handTransform = GetHandTransform(rightHandTranform, leftHandTransform);
             Projectile projectileInstance = Instantiate(projectile, handTransform.position, Quaternion.identity);
             projectileInstance.SetTarget(target, instigator, calculatedDamage);
+        }
+
+        public Sprite GetIcon()
+        {
+            return ItemIcon;
         }
     }
 }
