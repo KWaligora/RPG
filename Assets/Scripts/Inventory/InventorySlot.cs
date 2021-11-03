@@ -9,7 +9,7 @@ namespace RPG.InventorySystem
     {
         private InventoryItemIcon itemIcon;
         private IInventoryItemData itemData = null;
-        private int currentStack = 1;
+        private int currentStack = 0;
         private Text stack;
 
         private void Awake() 
@@ -25,6 +25,7 @@ namespace RPG.InventorySystem
             {
                 this.itemData = itemData;                         
                 itemIcon.SetIcon(itemData.GetIcon());
+                currentStack = 1;
                 UpdateStack();
             }            
         }
@@ -37,6 +38,17 @@ namespace RPG.InventorySystem
                 stack.text = currentStack.ToString();
             }
             else stack.enabled  = false;
+        }
+
+        public int GetStack()
+        {
+            return currentStack;
+        }
+
+        public void SetStack(int amount)
+        {
+            currentStack = Mathf.Min(itemData.GetMaxStack(), amount);
+            UpdateStack();
         }
 
         // returns excess
@@ -70,6 +82,7 @@ namespace RPG.InventorySystem
         {
             itemIcon.RemoveIcon();
             itemData = null;
+            currentStack = 0;
             UpdateStack();
         }
 
@@ -97,6 +110,7 @@ namespace RPG.InventorySystem
                 if(isEmpty())
                 { 
                     SetItem(dragItem.GetInventorySlot().GetItem());
+                    SetStack(dragItem.GetInventorySlot().GetStack());
                     dragItem.GetInventorySlot().RemoveItem();
                 }          
                 else
@@ -107,12 +121,27 @@ namespace RPG.InventorySystem
         }
 
         private void Swap(InventorySlot slot)
-        {        
+        {
+            if (this == slot) return;
             if(slot == null) return;
+
             IInventoryItemData itemDataTemp = slot.GetItem();
-            if(itemDataTemp.Equals(this.itemData)) return;
+
+            if(itemDataTemp == itemData)
+            {
+                int excess = IncreasAmount(slot.GetStack());
+
+                if(excess == 0)                
+                    slot.RemoveItem();                  
+                else slot.SetStack(excess);                    
+                
+                return;
+            }
+            int slotStackTemp = slot.GetStack();
+            slot.SetStack(currentStack);
             slot.SetItem(itemData);
             SetItem(itemDataTemp);
+            SetStack(slotStackTemp);
         }
     }
 }
