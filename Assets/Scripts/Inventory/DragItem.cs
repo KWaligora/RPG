@@ -45,13 +45,20 @@ namespace RPG.InventorySystem
         }
 
         public void OnEndDrag(PointerEventData eventData)
-        {
+        {                                     
             if(icon != null)
             {
                 icon.transform.SetParent(orginalParent);
                 icon.transform.position = orginalParent.position;
                 icon.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            }            
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    itemData.DropItem();
+                    inventorySlot.RemoveItem();
+                    Destroy(icon);
+                    itemData = null;
+                }
+            }                     
         }
     }
 }

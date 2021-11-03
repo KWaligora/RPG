@@ -7,6 +7,7 @@ namespace RPG.InventorySystem
 {
     public interface IInventoryItemData
     {
-        public Sprite GetIcon();
+        Sprite GetIcon();
+        void DropItem();
     }
 }

@@ -15,6 +15,7 @@ namespace RPG.Combat
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
         [SerializeField] Sprite ItemIcon;
+        [SerializeField] ItemPickup itemPickup;
 
         const string weaponName = "Weapon";
 
@@ -95,6 +96,12 @@ namespace RPG.Combat
         public Sprite GetIcon()
         {
             return ItemIcon;
+        }
+
+        public void DropItem()
+        {
+            Transform transform = GameObject.FindWithTag("Player").transform;
+            Instantiate(itemPickup, transform.position, new Quaternion());
         }
     }
 }

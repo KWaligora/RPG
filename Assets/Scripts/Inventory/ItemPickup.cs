@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using RPG.Control;
 using RPG.InventorySystem;
@@ -9,15 +8,12 @@ namespace RPG.Combat
     {
         [SerializeField] WeaponConfig item;
         [SerializeField] float HealthToRestore = 0;
-        [SerializeField] float respawnTime = 5;
-        [SerializeField] Inventory inventory;
 
-        private void OnTriggerEnter(Collider other) 
+        private Inventory inventory;
+
+        private void Start() 
         {
-            if(other.gameObject.tag == "Player")
-            {               
-                Pickup(other.gameObject);
-            }
+            inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();    
         }
 
         private void Pickup(GameObject subject)
@@ -25,23 +21,7 @@ namespace RPG.Combat
             if(item != null)
             {              
                 inventory.AddItem(item);
-            }
-            StartCoroutine(HideForSeconds(respawnTime));
-        }
-
-        private IEnumerator HideForSeconds(float seconds)
-        {
-            ShowPickup(false);
-            yield return new WaitForSeconds(seconds);
-            ShowPickup(true);
-        }
-
-        private void ShowPickup(bool shouldShow)
-        {
-            GetComponent<Collider>().enabled = shouldShow;
-            foreach(Transform child in transform)
-            {
-                child.gameObject.SetActive(shouldShow);
+                Destroy(gameObject);
             }
         }
 
