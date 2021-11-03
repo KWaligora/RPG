@@ -37,6 +37,7 @@ namespace RPG.InventorySystem
                 playerController.enabled = false;
                 itemData = inventorySlot.GetItem();
                 icon.transform.SetParent(parentCanvas, false);
+                Debug.Log(icon.transform.childCount);
                 icon.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }           
         }
@@ -63,7 +64,8 @@ namespace RPG.InventorySystem
                     itemData = null;
                 }
             }
-            playerController.enabled = true;                              
+            playerController.enabled = true;
+            Debug.Log(icon.transform.childCount);                           
         }
     }
 }
