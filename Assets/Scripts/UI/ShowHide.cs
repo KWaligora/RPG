@@ -4,8 +4,7 @@ namespace RPG.UI
 {
     public class ShowHide : MonoBehaviour
     {
-        [SerializeField] 
-        CanvasGroup UI;
+        [SerializeField] CanvasGroup UI;
         bool hidden = true;
 
         private void Start() 

@@ -90,5 +90,11 @@ namespace RPG.Items
             Projectile projectileInstance = Instantiate(projectile, handTransform.position, Quaternion.identity);
             projectileInstance.SetTarget(target, instigator, calculatedDamage);
         }
+
+        public override string GetStats()
+        {
+            return "weaponDamage: " + weaponDamage + "\npercentageBonus: " + percentageBonus
+            + "\n weaponRange: " + weaponRange;
+        }
     }
 }

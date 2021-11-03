@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.InventorySystem.UI;
+using RPG.Items;
 
 namespace RPG.InventorySystem
 {
@@ -22,7 +23,7 @@ namespace RPG.InventorySystem
             inventoryUI.CreateItemSlots(inventorySize, ref inventorySlots);
         }
 
-        public bool AddItem(IInventoryItemData itemData)
+        public bool AddItem(ItemDataBase itemData)
         {
             if(itemData.GetMaxStack() > 1)
                 if(TryStack(itemData)) return true;
@@ -37,7 +38,7 @@ namespace RPG.InventorySystem
             return false;
         }
 
-        private bool TryStack(IInventoryItemData itemData)
+        private bool TryStack(ItemDataBase itemData)
         {
             int itemMaxStack = itemData.GetMaxStack();
             int excess;

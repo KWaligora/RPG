@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using RPG.InventorySystem.UI;
 using RPG.Control;
+using RPG.Items;
 
 namespace RPG.InventorySystem
 {
@@ -11,7 +12,7 @@ namespace RPG.InventorySystem
         private Transform orginalParent;
         private InventorySlot inventorySlot;
         private InventoryItemIcon icon;
-        private IInventoryItemData itemData;
+        private ItemDataBase itemData;
         private CanvasGroup canvasGroup;
         private PlayerController playerController;
 

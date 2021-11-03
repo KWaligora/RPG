@@ -2,29 +2,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using RPG.InventorySystem.UI;
+using RPG.Items;
 
 namespace RPG.InventorySystem
 {
-    public class InventorySlot : MonoBehaviour, IDropHandler
+    public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
         private InventoryItemIcon itemIcon;
-        private IInventoryItemData itemData = null;
+        private ItemDataBase itemData = null;
+        private InventoryToolTip toolTip;
         private int currentStack = 0;
         private Text stack;
 
         private void Awake() 
         {
             itemIcon = GetComponentInChildren<InventoryItemIcon>();
+            toolTip = GetComponentInChildren<InventoryToolTip>();
             stack = GetComponentInChildren<Text>();
             stack.enabled = false;
         }
 
-        public void SetItem(IInventoryItemData itemData)
+        public void SetItem(ItemDataBase itemData)
         {
             if(itemData != null)
             {
                 this.itemData = itemData;                         
                 itemIcon.SetIcon(itemData.GetIcon());
+                toolTip.Set(itemData);
                 currentStack = 1;
                 UpdateStack();
             }            
@@ -73,7 +77,7 @@ namespace RPG.InventorySystem
             else UpdateStack();
         }
 
-        public IInventoryItemData GetItem()
+        public ItemDataBase GetItem()
         {
             return itemData;
         }
@@ -83,6 +87,7 @@ namespace RPG.InventorySystem
             itemIcon.RemoveIcon();
             itemData = null;
             currentStack = 0;
+            toolTip.Reset();
             UpdateStack();
         }
 
@@ -102,9 +107,9 @@ namespace RPG.InventorySystem
            if(eventData.pointerDrag != null)
            {
                 DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();
-                if(dragItem == null) return; 
+                if(dragItem == null) return;
 
-                IInventoryItemData item = dragItem.GetInventorySlot().GetItem();
+                ItemDataBase item = dragItem.GetInventorySlot().GetItem();
                 if(item == null) return;                              
                 
                 if(isEmpty())
@@ -125,7 +130,7 @@ namespace RPG.InventorySystem
             if (this == slot) return;
             if(slot == null) return;
 
-            IInventoryItemData itemDataTemp = slot.GetItem();
+            ItemDataBase itemDataTemp = slot.GetItem();
 
             if(itemDataTemp == itemData)
             {
@@ -142,6 +147,16 @@ namespace RPG.InventorySystem
             slot.SetStack(currentStack);            
             SetItem(itemDataTemp);
             SetStack(slotStackTemp);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {           
+            toolTip.Show();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            toolTip.Hide();
         }
     }
 }

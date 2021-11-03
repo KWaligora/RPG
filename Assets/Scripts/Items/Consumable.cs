@@ -7,5 +7,9 @@ namespace RPG.Items
     {
         [SerializeField] float pointsToHeal;
 
+        public override string GetStats()
+        {
+            return "Points to heal:" + pointsToHeal;
+        }
     }
 }

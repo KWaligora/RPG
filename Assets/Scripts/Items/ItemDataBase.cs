@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace RPG.Items
 {
-    public abstract class ItemDataBase : ScriptableObject, IInventoryItemData
+    public abstract class ItemDataBase : ScriptableObject
     {
         [SerializeField] Sprite ItemIcon;
         [SerializeField] ItemPickup itemPickup;
         [SerializeField] int MaxStack = 1;
         [SerializeField] string itemName;
-        [SerializeField] string description;
+        [SerializeField] string description;    
 
         public void DropItem()
         {
@@ -27,5 +27,16 @@ namespace RPG.Items
            return MaxStack;
         }
 
+        public string GetItemName()
+        {
+            return itemName;
+        }
+
+        public string GetDescription()
+        {
+            return description;
+        }
+
+        public abstract string GetStats();
     }
 }
