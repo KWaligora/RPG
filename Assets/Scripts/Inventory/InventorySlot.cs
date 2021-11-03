@@ -47,23 +47,31 @@ namespace RPG.InventorySystem
 
         public void OnDrop(PointerEventData eventData)
         {
-           if(eventData.pointerDrag != null && isEmpty())
+           if(eventData.pointerDrag != null)
            {
-               DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();
-               SetItem(dragItem.GetInventorySlot().GetItem());
-               dragItem.GetInventorySlot().RemoveItem();
-           }
-           else if(eventData.pointerDrag != null)
-           {
-                DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();                
-                Swap(dragItem.GetInventorySlot());
+                DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();
+                if(dragItem == null) return; 
+
+                IInventoryItemData item = dragItem.GetInventorySlot().GetItem();
+                if(item == null) return;                              
+                
+                if(isEmpty())
+                { 
+                    SetItem(dragItem.GetInventorySlot().GetItem());
+                    dragItem.GetInventorySlot().RemoveItem();
+                }          
+                else
+                {                  
+                    Swap(dragItem.GetInventorySlot());                    
+                }             
            }
         }
 
         private void Swap(InventorySlot slot)
-        {
+        {        
+            if(slot == null) return;
             IInventoryItemData itemDataTemp = slot.GetItem();
-
+            if(itemDataTemp.Equals(this.itemData)) return;
             slot.SetItem(itemData);
             SetItem(itemDataTemp);
         }

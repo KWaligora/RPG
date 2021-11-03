@@ -1,6 +1,7 @@
 using UnityEngine;
 using RPG.InventorySystem.UI;
 using UnityEngine.EventSystems;
+using RPG.Control;
 
 namespace RPG.InventorySystem
 {
@@ -12,12 +13,14 @@ namespace RPG.InventorySystem
         private InventoryItemIcon icon;
         private IInventoryItemData itemData;
         private CanvasGroup canvasGroup;
+        private PlayerController playerController;
 
         private void Awake() 
         {
             parentCanvas = GetComponentInParent<Canvas>().transform;
             orginalParent = gameObject.transform;
             inventorySlot = GetComponent<InventorySlot>();
+            playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
 
         public InventorySlot GetInventorySlot()
@@ -30,6 +33,8 @@ namespace RPG.InventorySystem
             icon = inventorySlot.GetItemIcon();
             if(icon != null)
             {
+                icon = inventorySlot.GetItemIcon();
+                playerController.enabled = false;
                 itemData = inventorySlot.GetItem();
                 icon.transform.SetParent(parentCanvas, false);
                 icon.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -55,10 +60,10 @@ namespace RPG.InventorySystem
                 {
                     itemData.DropItem();
                     inventorySlot.RemoveItem();
-                    Destroy(icon);
                     itemData = null;
                 }
-            }                     
+            }
+            playerController.enabled = true;                              
         }
     }
 }
