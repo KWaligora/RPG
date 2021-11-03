@@ -8,6 +8,8 @@ namespace RPG.Items
         [SerializeField] Sprite ItemIcon;
         [SerializeField] ItemPickup itemPickup;
         [SerializeField] int MaxStack = 1;
+        [SerializeField] string itemName;
+        [SerializeField] string description;
 
         public void DropItem()
         {
