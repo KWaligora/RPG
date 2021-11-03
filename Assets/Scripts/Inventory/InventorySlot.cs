@@ -138,8 +138,8 @@ namespace RPG.InventorySystem
                 return;
             }
             int slotStackTemp = slot.GetStack();
-            slot.SetStack(currentStack);
             slot.SetItem(itemData);
+            slot.SetStack(currentStack);            
             SetItem(itemDataTemp);
             SetStack(slotStackTemp);
         }
