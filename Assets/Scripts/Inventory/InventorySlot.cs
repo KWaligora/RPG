@@ -53,6 +53,19 @@ namespace RPG.InventorySystem
                SetItem(dragItem.GetInventorySlot().GetItem());
                dragItem.GetInventorySlot().RemoveItem();
            }
+           else if(eventData.pointerDrag != null)
+           {
+                DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();                
+                Swap(dragItem.GetInventorySlot());
+           }
+        }
+
+        private void Swap(InventorySlot slot)
+        {
+            IInventoryItemData itemDataTemp = slot.GetItem();
+
+            slot.SetItem(itemData);
+            SetItem(itemDataTemp);
         }
     }
 }
