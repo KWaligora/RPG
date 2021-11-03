@@ -2,12 +2,11 @@ using UnityEngine;
 using RPG.Control;
 using RPG.InventorySystem;
 
-namespace RPG.Combat
+namespace RPG.Items
 {
     public class ItemPickup : MonoBehaviour, IRaycastable
     {
         [SerializeField] WeaponConfig item;
-        [SerializeField] float HealthToRestore = 0;
 
         private Inventory inventory;
 

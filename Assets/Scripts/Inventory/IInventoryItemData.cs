@@ -9,5 +9,6 @@ namespace RPG.InventorySystem
     {
         Sprite GetIcon();
         void DropItem();
+        bool IsStackable();
     }
 }

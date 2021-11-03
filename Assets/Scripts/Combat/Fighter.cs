@@ -6,6 +6,7 @@ using RPG.Attributes;
 using RPG.Stats;
 using System.Collections.Generic;
 using GameDevTV.Utils;
+using RPG.Items;
 
 namespace RPG.Combat
 {

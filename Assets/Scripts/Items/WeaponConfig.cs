@@ -1,10 +1,11 @@
 using RPG.Attributes;
 using UnityEngine;
+using RPG.Combat;
 using RPG.InventorySystem;
 
-namespace RPG.Combat
+namespace RPG.Items
 {
-    [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
+    [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapons/New Weapon", order = 0)]
     public class WeaponConfig : ScriptableObject, IInventoryItemData
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
@@ -41,7 +42,7 @@ namespace RPG.Combat
             {           
                  animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;                
             }
-
+ 
             return weapon;
         }
 
@@ -102,6 +103,11 @@ namespace RPG.Combat
         {
             Transform transform = GameObject.FindWithTag("Player").transform;
             Instantiate(itemPickup, transform.position, new Quaternion());
+        }
+
+        public bool IsStackable()
+        {
+           return false;
         }
     }
 }
