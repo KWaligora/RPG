@@ -9,6 +9,7 @@ namespace RPG.InventorySystem
     {
         Sprite GetIcon();
         void DropItem();
-        bool IsStackable();
+        // maximum items of the same type in slot
+        int GetMaxStack();
     }
 }

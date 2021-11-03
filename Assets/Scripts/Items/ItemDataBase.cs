@@ -7,7 +7,7 @@ namespace RPG.Items
     {
         [SerializeField] Sprite ItemIcon;
         [SerializeField] ItemPickup itemPickup;
-        [SerializeField] bool stackable;
+        [SerializeField] int MaxStack = 1;
 
         public void DropItem()
         {
@@ -20,9 +20,9 @@ namespace RPG.Items
             return ItemIcon;
         }
 
-        public bool IsStackable()
+        public int GetMaxStack()
         {
-            return stackable;
+           return MaxStack;
         }
     }
 }

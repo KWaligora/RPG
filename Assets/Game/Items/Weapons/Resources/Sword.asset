@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6e0d5cea414ff46b774a7d55f1ca0d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  ItemIcon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
+  itemPickup: {fileID: 563358679869120087, guid: 1e1f4e0770aa84a4488d747157abd48d, type: 3}
+  MaxStack: 1
   animatorOverride: {fileID: 22100000, guid: abd386fd379aaf543923e2b3d4a7f0e6, type: 2}
   equipedPrefab: {fileID: 3995038590547355257, guid: a9617b8f28b38c04b8da389b6421cf52, type: 3}
   weaponDamage: 10
@@ -19,5 +22,3 @@ MonoBehaviour:
   weaponRange: 2
   isRightHanded: 1
   projectile: {fileID: 0}
-  ItemIcon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
-  itemPickup: {fileID: 563358679869120087, guid: 1e1f4e0770aa84a4488d747157abd48d, type: 3}

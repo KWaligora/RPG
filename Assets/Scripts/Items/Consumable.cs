@@ -1,5 +1,4 @@
 using UnityEngine;
-using RPG.InventorySystem;
 
 namespace RPG.Items
 {    
@@ -7,5 +6,6 @@ namespace RPG.Items
     public class Consumable : ItemDataBase
     {
         [SerializeField] float pointsToHeal;
+
     }
 }
