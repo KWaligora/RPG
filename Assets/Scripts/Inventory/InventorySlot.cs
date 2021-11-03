@@ -63,7 +63,7 @@ namespace RPG.InventorySystem
                 else
                 {                  
                     Swap(dragItem.GetInventorySlot());                    
-                }             
+                }            
            }
         }
 

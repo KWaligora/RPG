@@ -1,12 +1,11 @@
 using RPG.Attributes;
 using UnityEngine;
 using RPG.Combat;
-using RPG.InventorySystem;
 
 namespace RPG.Items
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapons/New Weapon", order = 0)]
-    public class WeaponConfig : ScriptableObject, IInventoryItemData
+    public class WeaponConfig : ItemDataBase
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equipedPrefab = null;
@@ -15,8 +14,6 @@ namespace RPG.Items
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
-        [SerializeField] Sprite ItemIcon;
-        [SerializeField] ItemPickup itemPickup;
 
         const string weaponName = "Weapon";
 
@@ -92,22 +89,6 @@ namespace RPG.Items
             Transform handTransform = GetHandTransform(rightHandTranform, leftHandTransform);
             Projectile projectileInstance = Instantiate(projectile, handTransform.position, Quaternion.identity);
             projectileInstance.SetTarget(target, instigator, calculatedDamage);
-        }
-
-        public Sprite GetIcon()
-        {
-            return ItemIcon;
-        }
-
-        public void DropItem()
-        {
-            Transform transform = GameObject.FindWithTag("Player").transform;
-            Instantiate(itemPickup, transform.position, new Quaternion());
-        }
-
-        public bool IsStackable()
-        {
-           return false;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace RPG.Items
 {
     public class ItemPickup : MonoBehaviour, IRaycastable
     {
-        [SerializeField] WeaponConfig item;
+        [SerializeField] ItemDataBase item;
 
         private Inventory inventory;
 

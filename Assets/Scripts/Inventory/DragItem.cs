@@ -1,6 +1,6 @@
 using UnityEngine;
-using RPG.InventorySystem.UI;
 using UnityEngine.EventSystems;
+using RPG.InventorySystem.UI;
 using RPG.Control;
 
 namespace RPG.InventorySystem
