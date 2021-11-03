@@ -19,8 +19,8 @@ namespace RPG.Items
         {
             if(item != null)
             {              
-                inventory.AddItem(item);
-                Destroy(gameObject);
+                if(inventory.AddItem(item))
+                    Destroy(gameObject);
             }
         }
 
