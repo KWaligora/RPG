@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278e4c172a9873c4399eadd37d56892f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 1757374215977449558}
 --- !u!114 &2146744732076922535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cb146884d5f4746a4f5fd4e3b27e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotPrefab: {fileID: -5411294347679633314, guid: 2ca56aaaf2ca89b48805b18388111fdc, type: 3}
+  inventorySlotPrefab: {fileID: 2254897942007643257, guid: b6c9adec9fc362647a377f43782d00f1, type: 3}
   itemsContainer: {fileID: 6679602630104979073}
 --- !u!225 &1387141212453598612
 CanvasGroup:

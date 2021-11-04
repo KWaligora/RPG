@@ -83,7 +83,7 @@ namespace RPG.InventorySystem
             }
         }
 
-        private void Swap(InventorySlot slot)
+        private void Swap(ItemSlotBases slot)
         {
             if (this == slot) return;
             if (slot == null) return;

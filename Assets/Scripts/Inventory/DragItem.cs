@@ -6,11 +6,14 @@ using RPG.Items;
 
 namespace RPG.InventorySystem
 {
+    /// <summary>
+    /// Handle draging item icons. Destination need to handle OnDrop
+    /// </summary>
     public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         private Transform parentCanvas;
         private Transform orginalParent;
-        private InventorySlot inventorySlot;
+        private ItemSlotBases inventorySlot;
         private SlotItemIcon icon;
         private ItemDataBase itemData;
         private CanvasGroup canvasGroup;
@@ -20,11 +23,11 @@ namespace RPG.InventorySystem
         {
             parentCanvas = GetComponentInParent<Canvas>().transform;
             orginalParent = gameObject.transform;
-            inventorySlot = GetComponent<InventorySlot>();
+            inventorySlot = GetComponent<ItemSlotBases>();
             playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
 
-        public InventorySlot GetInventorySlot()
+        public ItemSlotBases GetInventorySlot()
         {
             return inventorySlot;
         }
