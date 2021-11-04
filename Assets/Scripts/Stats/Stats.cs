@@ -5,6 +5,7 @@ namespace RPG.Stats
         Health,
         ExperienceReward,
         ExpierenceToLevelUp,
-        Damage
+        Damage,
+        Armor
     }
 }

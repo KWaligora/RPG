@@ -22,7 +22,7 @@ namespace RPG.InventorySystem
 
         private InventoryToolTip toolTip;        
 
-        private void Awake()
+        protected virtual void Awake()
         {
             itemIcon = GetComponentInChildren<SlotItemIcon>();
             toolTip = GetComponentInChildren<InventoryToolTip>();

@@ -1,13 +1,14 @@
 using RPG.Attributes;
 using UnityEngine;
 using RPG.Combat;
-using RPG.Stats;
+using RPG.InventorySystem;
 using System.Collections.Generic;
+using RPG.Stats;
 
 namespace RPG.Items
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapons/New Weapon", order = 0)]
-    public class WeaponConfig : ItemDataBase
+    public class WeaponConfig : ItemDataBase, IEquipable
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equipedPrefab = null;
@@ -17,6 +18,7 @@ namespace RPG.Items
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
 
+        Dictionary<Stat, float> Modifiers;
         const string weaponName = "Weapon";
 
         public Weapon Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
@@ -97,6 +99,17 @@ namespace RPG.Items
         {
             return "weaponDamage: " + weaponDamage + "\npercentageBonus: " + percentageBonus
             + "\n weaponRange: " + weaponRange;
+        }
+
+        public void GetAdditiveModifiers(ref Dictionary<Stat, float> modifiers)
+        {
+            modifiers[Stat.Damage] = weaponDamage;
+            modifiers[Stat.Health] = 5;
+        }
+
+        public void GetPercentageModifiers(ref Dictionary<Stat, float> modifiers)
+        {
+            modifiers[Stat.Damage] = percentageBonus;
         }
     }
 }
