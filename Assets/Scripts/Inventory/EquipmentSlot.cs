@@ -8,7 +8,7 @@ namespace RPG.InventorySystem
         Transform PrefabDesintation;
 
         private void Start() {
-            itemChange.AddListener(Equip);
+            OnItemChange += Equip;
         }
 
         private void Equip()
