@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using RPG.Items;
 using RPG.InventorySystem.UI;
 
@@ -16,6 +17,9 @@ namespace RPG.InventorySystem
         public ItemStack itemStack { private set; get; }
         public ItemDataBase itemData { private set; get; }
 
+        // Fire when item in slot change
+        public UnityEvent itemChange;
+
         private InventoryToolTip toolTip;        
 
         private void Awake()
@@ -25,16 +29,19 @@ namespace RPG.InventorySystem
             itemStack = GetComponentInChildren<ItemStack>();
 
             itemData = null;
+            itemChange = new UnityEvent();
         }
 
         public void SetItem(ItemDataBase itemData)
         {
             if (itemData != null)
-            {
+            {                
                 this.itemData = itemData;
                 itemIcon.SetIcon(itemData.GetIcon());
                 toolTip.Set(itemData);
                 itemStack.SetCurrentStack(1);
+
+                itemChange.Invoke();
             }
         }
 
@@ -44,6 +51,8 @@ namespace RPG.InventorySystem
             itemStack.SetCurrentStack(0);
             itemData = null;
             toolTip.Reset();
+
+            itemChange.Invoke();
         }
 
         public bool isEmpty()
