@@ -45,9 +45,9 @@ namespace RPG.InventorySystem
 
             foreach (InventorySlot slot in inventorySlots)
             {
-                if (slot.GetItem() == itemData)
+                if (slot.itemData == itemData)
                 {      
-                    excess = slot.GetStack().IncreasAmount(1, itemData.GetMaxStack());
+                    excess = slot.itemStack.IncreasAmount(1, itemData.GetMaxStack());
                     if(excess == 0) return true;
                 }              
             }        

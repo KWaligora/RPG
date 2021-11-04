@@ -31,12 +31,11 @@ namespace RPG.InventorySystem
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            icon = inventorySlot.GetItemIcon();
+            icon = inventorySlot.itemIcon;
             if(icon != null)
-            {
-                icon = inventorySlot.GetItemIcon();
+            {                
                 playerController.enabled = false;
-                itemData = inventorySlot.GetItem();
+                itemData = inventorySlot.itemData;
                 icon.transform.SetParent(parentCanvas, false);
                 icon.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }           
