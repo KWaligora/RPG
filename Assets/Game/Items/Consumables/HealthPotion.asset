@@ -15,5 +15,6 @@ MonoBehaviour:
   ItemIcon: {fileID: 21300000, guid: aba0f700d91d4fc4fa8c724899ab04ab, type: 3}
   itemPickup: {fileID: 7755930349737802316, guid: 386bfdd3c78c84a4182e084120c95882, type: 3}
   MaxStack: 6
-  currentStack: 1
+  itemName: Health Potion
+  description: healing some wounds
   pointsToHeal: 20

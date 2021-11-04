@@ -1,15 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using TMPro;
 using RPG.Items;
 
 namespace RPG.InventorySystem.UI
 {
     public class InventoryToolTip : MonoBehaviour
      {
-        [SerializeField] Text itemName;
-        [SerializeField] Text stats;
-        [SerializeField] Text description;
+        [SerializeField] TextMeshProUGUI itemName;
+        [SerializeField] TextMeshProUGUI stats;
+        [SerializeField] TextMeshProUGUI description;
 
         private Canvas canvas;
         private bool set = false;
