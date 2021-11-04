@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace RPG.UI
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class ShowHide : MonoBehaviour
     {
-        [SerializeField] CanvasGroup UI;
+        private CanvasGroup UI;
         bool hidden = true;
 
         private void Start() 
