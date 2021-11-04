@@ -47,7 +47,7 @@ namespace RPG.InventorySystem
             {
                 if (slot.GetItem() == itemData)
                 {      
-                    excess = slot.IncreasAmount(1);
+                    excess = slot.GetStack().IncreasAmount(1, itemData.GetMaxStack());
                     if(excess == 0) return true;
                 }              
             }        

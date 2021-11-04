@@ -6,21 +6,22 @@ using RPG.Items;
 
 namespace RPG.InventorySystem
 {
+    /// <summary>
+    /// Slot for any type of item
+    /// </summary>
     public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] ItemType AllowedItemType = ItemType.Any;
-        private InventoryItemIcon itemIcon;
+        private SlotItemIcon itemIcon;
         private ItemDataBase itemData = null;
         private InventoryToolTip toolTip;
-        private int currentStack = 0;
-        private Text stack;
+        private ItemStack itemStack;
 
         private void Awake() 
         {
-            itemIcon = GetComponentInChildren<InventoryItemIcon>();
+            itemIcon = GetComponentInChildren<SlotItemIcon>();
             toolTip = GetComponentInChildren<InventoryToolTip>();
-            stack = GetComponentInChildren<Text>();
-            stack.enabled = false;
+            itemStack = GetComponentInChildren<ItemStack>();
         }
 
         public void SetItem(ItemDataBase itemData)
@@ -30,58 +31,19 @@ namespace RPG.InventorySystem
                 this.itemData = itemData;                         
                 itemIcon.SetIcon(itemData.GetIcon());
                 toolTip.Set(itemData);
-                currentStack = 1;
-                UpdateStack();
+                itemStack.SetCurrentStack(1);
             }            
+        }
+
+        public ItemStack GetStack()
+        {
+            return itemStack;
         }
 
         private bool CheckType(ItemDataBase itemData)
         {
             if(AllowedItemType == ItemType.Any || AllowedItemType == itemData.GetItemType()) return true;
             return false;
-        }
-
-        public void UpdateStack()
-        {
-            if(currentStack > 1)
-            {
-                stack.enabled = true;
-                stack.text = currentStack.ToString();
-            }
-            else stack.enabled  = false;
-        }
-
-        public int GetStack()
-        {
-            return currentStack;
-        }
-
-        public void SetStack(int amount)
-        {
-            currentStack = Mathf.Min(itemData.GetMaxStack(), amount);
-            UpdateStack();
-        }
-
-        // returns excess
-        public int IncreasAmount(int amount)
-        {
-            // set new amount
-            int maxStack = itemData.GetMaxStack();
-            currentStack = Mathf.Min(maxStack, currentStack + amount);
-
-            UpdateStack();
-
-            // calculate excess
-            if(maxStack >= currentStack + amount)
-                return 0;
-            else return maxStack - currentStack + amount;
-        }
-
-        public void DecreaseAmount(int amount)
-        {
-            currentStack = Mathf.Max(0, currentStack - amount);
-            if(currentStack == 0) RemoveItem();
-            else UpdateStack();
         }
 
         public ItemDataBase GetItem()
@@ -92,13 +54,12 @@ namespace RPG.InventorySystem
         public void RemoveItem()
         {
             itemIcon.RemoveIcon();
-            itemData = null;
-            currentStack = 0;
+            itemStack.SetCurrentStack(0);
+            itemData = null;            
             toolTip.Reset();
-            UpdateStack();
         }
 
-        public InventoryItemIcon GetItemIcon()
+        public SlotItemIcon GetItemIcon()
         {
             return itemIcon;
         }
@@ -124,7 +85,7 @@ namespace RPG.InventorySystem
                 if(isEmpty())
                 { 
                     SetItem(dragItem.GetInventorySlot().GetItem());
-                    SetStack(dragItem.GetInventorySlot().GetStack());
+                    itemStack.SetCurrentStack(dragItem.GetInventorySlot().GetStack().GetCurrentStack());
                     dragItem.GetInventorySlot().RemoveItem();
                 }          
                 else
@@ -143,18 +104,18 @@ namespace RPG.InventorySystem
 
             if(itemDataTemp == itemData)
             {
-                int excess = IncreasAmount(slot.GetStack());
+                int excess = itemStack.IncreasAmount(slot.GetStack().GetCurrentStack(), slot.GetItem().GetMaxStack());
 
                 if(excess == 0)                
                     slot.RemoveItem();                  
-                else slot.SetStack(excess);
+                else slot.GetStack().SetCurrentStack(excess);
                 return;
             }
-            int slotStackTemp = slot.GetStack();
+            int slotStackTemp = slot.GetStack().GetCurrentStack();
             slot.SetItem(itemData);
-            slot.SetStack(currentStack);            
+            slot.GetStack().SetCurrentStack(itemStack.GetCurrentStack());            
             SetItem(itemDataTemp);
-            SetStack(slotStackTemp);
+            itemStack.SetCurrentStack(slotStackTemp);
         }
 
         public void OnPointerEnter(PointerEventData eventData)

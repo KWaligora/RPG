@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace RPG.InventorySystem.UI
 {
     [RequireComponent(typeof(Image))]
-    public class InventoryItemIcon : MonoBehaviour
+    public class SlotItemIcon : MonoBehaviour
     {
         private Image CurrentIcon;   
 

@@ -11,7 +11,7 @@ namespace RPG.InventorySystem
         private Transform parentCanvas;
         private Transform orginalParent;
         private InventorySlot inventorySlot;
-        private InventoryItemIcon icon;
+        private SlotItemIcon icon;
         private ItemDataBase itemData;
         private CanvasGroup canvasGroup;
         private PlayerController playerController;
