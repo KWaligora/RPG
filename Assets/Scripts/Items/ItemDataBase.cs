@@ -1,4 +1,3 @@
-using RPG.InventorySystem;
 using UnityEngine;
 
 namespace RPG.Items
@@ -9,7 +8,8 @@ namespace RPG.Items
         [SerializeField] ItemPickup itemPickup;
         [SerializeField] int MaxStack = 1;
         [SerializeField] string itemName;
-        [SerializeField] string description;    
+        [SerializeField] string description;
+        [SerializeField] ItemType itemType;
 
         public void DropItem()
         {
@@ -35,6 +35,11 @@ namespace RPG.Items
         public string GetDescription()
         {
             return description;
+        }
+
+        public ItemType GetItemType()
+        {
+            return itemType;
         }
 
         public abstract string GetStats();

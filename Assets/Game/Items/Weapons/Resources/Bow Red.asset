@@ -17,6 +17,7 @@ MonoBehaviour:
   MaxStack: 1
   itemName: Bow
   description: Ranged weapon
+  itemType: 3
   animatorOverride: {fileID: 22100000, guid: a2d9ea95ebcc654428c21ecd0f36494a, type: 2}
   equipedPrefab: {fileID: 5217950924415382272, guid: 401cb1ed7761efe4cb50bf0753e8ae62, type: 3}
   weaponDamage: 5

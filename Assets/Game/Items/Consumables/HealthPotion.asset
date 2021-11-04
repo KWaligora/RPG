@@ -17,4 +17,5 @@ MonoBehaviour:
   MaxStack: 6
   itemName: Health Potion
   description: healing some wounds
+  itemType: 8
   pointsToHeal: 20

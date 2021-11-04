@@ -8,6 +8,7 @@ namespace RPG.InventorySystem
 {
     public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField] ItemType AllowedItemType = ItemType.Any;
         private InventoryItemIcon itemIcon;
         private ItemDataBase itemData = null;
         private InventoryToolTip toolTip;
@@ -32,6 +33,12 @@ namespace RPG.InventorySystem
                 currentStack = 1;
                 UpdateStack();
             }            
+        }
+
+        private bool CheckType(ItemDataBase itemData)
+        {
+            if(AllowedItemType == ItemType.Any || AllowedItemType == itemData.GetItemType()) return true;
+            return false;
         }
 
         public void UpdateStack()
@@ -112,6 +119,8 @@ namespace RPG.InventorySystem
                 ItemDataBase item = dragItem.GetInventorySlot().GetItem();
                 if(item == null) return;                              
                 
+                if(!CheckType(item)) return;
+
                 if(isEmpty())
                 { 
                     SetItem(dragItem.GetInventorySlot().GetItem());
@@ -138,8 +147,7 @@ namespace RPG.InventorySystem
 
                 if(excess == 0)                
                     slot.RemoveItem();                  
-                else slot.SetStack(excess);                    
-                
+                else slot.SetStack(excess);
                 return;
             }
             int slotStackTemp = slot.GetStack();

@@ -17,6 +17,7 @@ MonoBehaviour:
   MaxStack: 1
   itemName: FireBall
   description: Spell
+  itemType: 3
   animatorOverride: {fileID: 22100000, guid: 857c9fcc359308244823e98e9630d5dd, type: 2}
   equipedPrefab: {fileID: 0}
   weaponDamage: 20
