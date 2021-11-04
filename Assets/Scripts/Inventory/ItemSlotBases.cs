@@ -32,6 +32,11 @@ namespace RPG.InventorySystem
             itemChange = new UnityEvent();
         }
 
+        public ItemType GetAllowedItemType()
+        {
+            return AllowedItemType;
+        }
+
         public void SetItem(ItemDataBase itemData)
         {
             if (itemData != null)

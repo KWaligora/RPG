@@ -11,8 +11,7 @@ using RPG.Items;
 namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
-    {
-        
+    {        
         [SerializeField] private float timeBetweenAttacks = 1f;        
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;

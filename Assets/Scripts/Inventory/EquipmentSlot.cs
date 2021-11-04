@@ -4,6 +4,7 @@ namespace RPG.InventorySystem
 {
     public class EquipmentSlot : ItemSlotBases
     {
+        //[SerializeField] Fighter fighter;
         Transform PrefabDesintation;
 
         private void Start() {
@@ -12,7 +13,15 @@ namespace RPG.InventorySystem
 
         private void Equip()
         {
-            Debug.Log(itemData.GetType());
+            // if(itemData is WeaponConfig)
+            // {
+            //     WeaponConfig weapon = itemData as WeaponConfig;
+            //     fighter.EquipWeapon(weapon);
+            // }
+            // if(itemData == null)
+            // {
+                
+            // }
         }
     }
 }

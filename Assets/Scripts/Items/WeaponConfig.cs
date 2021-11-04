@@ -1,6 +1,8 @@
 using RPG.Attributes;
 using UnityEngine;
 using RPG.Combat;
+using RPG.Stats;
+using System.Collections.Generic;
 
 namespace RPG.Items
 {
