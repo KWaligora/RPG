@@ -9,16 +9,16 @@ namespace RPG.InventorySystem
         //[SerializeField] Fighter fighter;
         Transform PrefabDesintation;
 
-        Dictionary<Stat, float> additiveModifiers;
-        Dictionary<Stat, float> percentageModifiers;
+        Dictionary<FighterStat, float> additiveModifiers;
+        Dictionary<FighterStat, float> percentageModifiers;
 
         protected override void Awake()
         {
             base.Awake();
 
             OnItemChange += Equip;
-            additiveModifiers = new Dictionary<Stat, float>();
-            percentageModifiers = new Dictionary<Stat, float>();
+            additiveModifiers = new Dictionary<FighterStat, float>();
+            percentageModifiers = new Dictionary<FighterStat, float>();
         }
 
         private void Equip()
@@ -49,14 +49,14 @@ namespace RPG.InventorySystem
             percentageModifiers.Clear();
         }
 
-        public float GetAdditiveModifier(Stat stat)
+        public float GetAdditiveModifier(FighterStat stat)
         {            
             if(additiveModifiers.ContainsKey(stat))
                 return additiveModifiers[stat];
             else return 0;
         }
 
-        public float GetPercentageModifier(Stat stat)
+        public float GetPercentageModifier(FighterStat stat)
         {
             if (percentageModifiers.ContainsKey(stat))
                 return percentageModifiers[stat];

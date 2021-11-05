@@ -5,7 +5,7 @@ using RPG.Stats;
 
 namespace RPG.InventorySystem
 {
-    public class Equipment : MonoBehaviour, IModifierProvider
+    public class Equipment : MonoBehaviour
     {   
         [SerializeField] GameObject equipmentUI;
 
@@ -23,22 +23,6 @@ namespace RPG.InventorySystem
             foreach (EquipmentSlot slot in slots)
             {
                 slotsDictionary[slot.GetAllowedItemType()] = slot;
-            }
-        }
-
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            foreach(KeyValuePair<ItemType, EquipmentSlot> slot in slotsDictionary)
-            {
-                yield return slot.Value.GetAdditiveModifier(stat);
-            }
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            foreach (KeyValuePair<ItemType, EquipmentSlot> slot in slotsDictionary)
-            {
-                yield return slot.Value.GetPercentageModifier(stat);
             }
         }
     }

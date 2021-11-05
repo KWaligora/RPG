@@ -18,7 +18,7 @@ namespace RPG.Items
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
 
-        Dictionary<Stat, float> Modifiers;
+        Dictionary<FighterStat, float> Modifiers;
         const string weaponName = "Weapon";
 
         public Weapon Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
@@ -101,15 +101,15 @@ namespace RPG.Items
             + "\n weaponRange: " + weaponRange;
         }
 
-        public void GetAdditiveModifiers(ref Dictionary<Stat, float> modifiers)
+        public void GetAdditiveModifiers(ref Dictionary<FighterStat, float> modifiers)
         {
-            modifiers[Stat.Damage] = weaponDamage;
-            modifiers[Stat.Health] = 5;
+            //modifiers[FighterStat.Damage] = weaponDamage;
+           // modifiers[FighterStat.Health] = 5;
         }
 
-        public void GetPercentageModifiers(ref Dictionary<Stat, float> modifiers)
+        public void GetPercentageModifiers(ref Dictionary<FighterStat, float> modifiers)
         {
-            modifiers[Stat.Damage] = percentageBonus;
+            //modifiers[FighterStat.Damage] = percentageBonus;
         }
     }
 }

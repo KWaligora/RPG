@@ -32,7 +32,8 @@ namespace RPG.Attributes
 
         private float GetInitialValue()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+            //return GetComponent<BaseStats>().GetStat(Stat.Health);
+            return 100;
         }
 
         public void Heal(float healthToRestore)
@@ -42,18 +43,18 @@ namespace RPG.Attributes
 
         private void OnEnable() 
         {
-            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+            //GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
         }
 
         private void OnDisable() 
         {
-            GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
+            //GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
         }
 
         private void RegenerateHealth()
         {
-            int regenHealthPoints = (int)GetComponent<BaseStats>().GetStat(Stat.Health) * regenerationPercentage / 100;
-            healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
+            //int regenHealthPoints = (int)GetComponent<BaseStats>().GetStat(Stat.Health) * regenerationPercentage / 100;
+            //healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 
         public object CaptureState()
@@ -98,10 +99,10 @@ namespace RPG.Attributes
 
         private void AwardExperience(GameObject instigator)
         {
-            Experience experience = instigator.GetComponent<Experience>();
-            if(experience == null) return;
+            // Experience experience = instigator.GetComponent<Experience>();
+            // if(experience == null) return;
 
-            experience.GainExperience((int)GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+            // experience.GainExperience((int)GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         public float GetHealthPoints()
@@ -111,17 +112,20 @@ namespace RPG.Attributes
 
         public float GetMaxHealthPoints()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+           // return GetComponent<BaseStats>().GetStat(Stat.Health);
+           return 100;
         }
 
         public float GetPercentage()
         {
-            return 100 * healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+           // return 100 * healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+           return 100;
         }
 
         public float GetFraction()
         {
-            return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+            //return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+            return 100;
         }
     }
 }
