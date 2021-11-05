@@ -44,19 +44,6 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   maxNavMeshProjectionDistance: 1
   sphereCastRadius: 1
---- !u!114 &-659245504268418798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4569823024720765442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89971b82480c5a489843a2ed1ef8b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experiencePoints: 0
 --- !u!114 &2690482623345395368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d36972c2a780f4aa09910cb3a21b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentUI: {fileID: 0}
 --- !u!1001 &23755905641061052
 PrefabInstance:
   m_ObjectHideFlags: 0
