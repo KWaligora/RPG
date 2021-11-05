@@ -8,12 +8,11 @@ using RPG.Stats;
 namespace RPG.Items
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapons/New Weapon", order = 0)]
-    public class WeaponConfig : ItemDataBase
+    public class WeaponConfig : ItemDataBase, IEquipable
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equipedPrefab = null;
-        [SerializeField] private float weaponDamage = 5f;
-        [SerializeField] private float percentageBonus = 0;
+        [SerializeField] private int weaponDamage = 5;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
@@ -73,11 +72,6 @@ namespace RPG.Items
             return weaponDamage;
         }
 
-        public float GetPercentageBonus()
-        {
-            return percentageBonus;
-        }
-
         public float GetRange()
         {
             return weaponRange;
@@ -97,8 +91,12 @@ namespace RPG.Items
 
         public override string GetStats()
         {
-            return "weaponDamage: " + weaponDamage + "\npercentageBonus: " + percentageBonus
-            + "\n weaponRange: " + weaponRange;
+            return "weaponDamage: " + weaponDamage + "\n weaponRange: " + weaponRange;
+        }
+
+        public void GetItemAttributes(ref Dictionary<PlayerAttributes, int> itemAttributes)
+        {
+            itemAttributes[PlayerAttributes.Damage] = weaponDamage;
         }
     }
 }

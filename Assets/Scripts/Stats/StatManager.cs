@@ -10,23 +10,28 @@ namespace RPG.Stats
     {
         [SerializeField] float initHealth;
         [SerializeField] float initDamage;
+        [SerializeField] float initArmor;
 
-        Dictionary<FighterStat, float> fighterStat;
+        protected Dictionary<FighterStat, float> fighterStat;
 
-        private void Awake() 
+        protected virtual void Awake() 
         {
-            fighterStat = new Dictionary<FighterStat, float>();            
+            fighterStat = new Dictionary<FighterStat, float>();
+            SetBaseStats();
         }
 
-        private void InitStats()
+        protected void SetBaseStats()
         {
             fighterStat[FighterStat.health] = initHealth;
-            fighterStat[FighterStat.damage] = initDamage;
+            fighterStat[FighterStat.flatDamage] = initDamage;
+            fighterStat[FighterStat.armor] = initArmor;
         }
 
         public float GetStat(FighterStat stat)
         {
-            return fighterStat[stat];
+            if(fighterStat.ContainsKey(stat))
+                return fighterStat[stat];
+            else return 0;
         }
     }
 }

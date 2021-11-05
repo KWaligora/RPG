@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using RPG.Items;
-using RPG.Stats;
 
 namespace RPG.InventorySystem
 {

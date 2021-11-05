@@ -1319,7 +1319,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955726312}
-  m_LocalRotation: {x: 0.061035518, y: 0.9342065, z: -0.29242414, w: 0.19498998}
+  m_LocalRotation: {x: 0.061035533, y: 0.9342065, z: -0.29242414, w: 0.19499001}
   m_LocalPosition: {x: 33.380634, y: 0.43999958, z: 15.033747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6861,6 +6861,22 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 1612646941}
+    - target: {fileID: 2724383896874279229, guid: ddf5640975ea0c6488506179706cc39c, type: 3}
+      propertyPath: baseEnergy
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724383896874279229, guid: ddf5640975ea0c6488506179706cc39c, type: 3}
+      propertyPath: baseStrength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724383896874279229, guid: ddf5640975ea0c6488506179706cc39c, type: 3}
+      propertyPath: baseVitality
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724383896874279229, guid: ddf5640975ea0c6488506179706cc39c, type: 3}
+      propertyPath: baseDexterity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7243360191354945697, guid: ddf5640975ea0c6488506179706cc39c, type: 3}
       propertyPath: persistentObjectPrefab
       value: 

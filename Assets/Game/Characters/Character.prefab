@@ -531,6 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHealth: 100
   initDamage: 10
+  initArmor: 1
 --- !u!1 &7167809936303655407
 GameObject:
   m_ObjectHideFlags: 0

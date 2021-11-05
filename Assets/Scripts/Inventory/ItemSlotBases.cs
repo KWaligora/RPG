@@ -45,7 +45,7 @@ namespace RPG.InventorySystem
                 toolTip.Set(itemData);
                 itemStack.SetCurrentStack(1);
 
-                if (OnItemChange != null) OnItemChange();
+               OnItemChange?.Invoke();
             }
         }
 
@@ -56,7 +56,7 @@ namespace RPG.InventorySystem
             itemData = null;
             toolTip.Reset();
 
-            if(OnItemChange != null) OnItemChange();
+            OnItemChange?.Invoke();
         }
 
         public bool isEmpty()
