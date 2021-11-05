@@ -6,14 +6,14 @@ namespace RPG.Stats
     {
         [SerializeField] FighterStat fighterStat;
 
-        private void Start() 
+        public float GetHealth()
         {
-
+            return fighterStat.health;
         }
 
-        private void SetInitValues()
+        public float GetDamage()
         {
-            
+            return fighterStat.damage;
         }
     }
 }

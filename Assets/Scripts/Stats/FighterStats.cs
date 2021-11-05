@@ -1,9 +1,12 @@
+using System;
+
 namespace RPG.Stats
 {
-   public struct FighterStat
-   {
-       int Health;
-       int Armor;
-       int Damage;
-   }
+    [Serializable]
+    public struct FighterStat
+    {
+        public float health;
+        public int armor;
+        public float damage;
+    }
 }

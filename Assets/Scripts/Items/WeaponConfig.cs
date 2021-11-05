@@ -8,7 +8,7 @@ using RPG.Stats;
 namespace RPG.Items
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapons/New Weapon", order = 0)]
-    public class WeaponConfig : ItemDataBase, IEquipable
+    public class WeaponConfig : ItemDataBase
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equipedPrefab = null;
@@ -99,17 +99,6 @@ namespace RPG.Items
         {
             return "weaponDamage: " + weaponDamage + "\npercentageBonus: " + percentageBonus
             + "\n weaponRange: " + weaponRange;
-        }
-
-        public void GetAdditiveModifiers(ref Dictionary<FighterStat, float> modifiers)
-        {
-            //modifiers[FighterStat.Damage] = weaponDamage;
-           // modifiers[FighterStat.Health] = 5;
-        }
-
-        public void GetPercentageModifiers(ref Dictionary<FighterStat, float> modifiers)
-        {
-            //modifiers[FighterStat.Damage] = percentageBonus;
         }
     }
 }
