@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RPG.Stats
 {
+    /// <summary>
+    /// Store FighterStats for character
+    /// </summary>
     public class StatManager : MonoBehaviour
     {
         [SerializeField] float initHealth;
@@ -12,10 +15,13 @@ namespace RPG.Stats
 
         private void Awake() 
         {
-            fighterStat = new Dictionary<FighterStat, float>();
+            fighterStat = new Dictionary<FighterStat, float>();            
+        }
+
+        private void InitStats()
+        {
             fighterStat[FighterStat.health] = initHealth;
             fighterStat[FighterStat.damage] = initDamage;
-
         }
 
         public float GetStat(FighterStat stat)

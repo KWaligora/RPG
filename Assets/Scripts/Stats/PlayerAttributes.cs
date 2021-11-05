@@ -1,10 +1,10 @@
 namespace RPG.Stats
 {
-    public struct PlayerAttributes
+    public enum PlayerAttributes
     {
-        int strength;
-        int dexterity;
-        int vitality;
-        int energy;
+        strength,
+        dexterity,
+        vitality,
+        energy,
     }
 }
