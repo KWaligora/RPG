@@ -115,7 +115,7 @@ namespace RPG.Combat
         //Animation Event
         private void Hit()
         {
-            float damage = statManager.GetDamage();            
+            float damage = statManager.GetStat(FighterStat.damage);            
             if(target == null) return;  
             if(currentWeapon.value != null)
             {
@@ -127,7 +127,7 @@ namespace RPG.Combat
         //Animation Event
         private void Shoot()
         {            
-            float damage = statManager.GetDamage();
+            float damage = statManager.GetStat(FighterStat.damage);
             if(target == null) return;
             if (currentWeapon.value != null)
             {

@@ -1,19 +1,26 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace RPG.Stats
 {
     public class StatManager : MonoBehaviour
     {
-        [SerializeField] FighterStat fighterStat;
+        [SerializeField] float initHealth;
+        [SerializeField] float initDamage;
 
-        public float GetHealth()
+        Dictionary<FighterStat, float> fighterStat;
+
+        private void Awake() 
         {
-            return fighterStat.health;
+            fighterStat = new Dictionary<FighterStat, float>();
+            fighterStat[FighterStat.health] = initHealth;
+            fighterStat[FighterStat.damage] = initDamage;
+
         }
 
-        public float GetDamage()
+        public float GetStat(FighterStat stat)
         {
-            return fighterStat.damage;
+            return fighterStat[stat];
         }
     }
 }

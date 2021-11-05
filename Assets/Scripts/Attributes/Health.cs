@@ -23,17 +23,17 @@ namespace RPG.Attributes
         private void Awake() 
         {
             statManager = GetComponent<StatManager>();
-            healthPoints = new LazyValue<float>(GetInitialValue);
+            healthPoints = new LazyValue<float>(GetInitialValue);         
         }
 
         private void Start() 
-        {
-            healthPoints.ForceInit();              
+        {                      
+            healthPoints.ForceInit();           
         }
 
         private float GetInitialValue()
         {
-            return statManager.GetHealth();
+            return statManager.GetStat(FighterStat.health);
     
         }
 
@@ -54,7 +54,7 @@ namespace RPG.Attributes
 
         private void RegenerateHealth()
         {
-            int regenHealthPoints = (int)statManager.GetHealth() * regenerationPercentage / 100;
+            int regenHealthPoints = (int)statManager.GetStat(FighterStat.health) * regenerationPercentage / 100;
             healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 
@@ -113,17 +113,17 @@ namespace RPG.Attributes
 
         public float GetMaxHealthPoints()
         {
-           return statManager.GetHealth();
+           return statManager.GetStat(FighterStat.health);
         }
 
         public float GetPercentage()
         {
-           return 100 * healthPoints.value / statManager.GetHealth();
+           return 100 * healthPoints.value / statManager.GetStat(FighterStat.health);
         }
 
         public float GetFraction()
         {
-            return healthPoints.value / statManager.GetHealth();          
+            return healthPoints.value / statManager.GetStat(FighterStat.health);          
         }
     }
 }

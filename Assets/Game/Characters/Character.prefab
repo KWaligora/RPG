@@ -529,10 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08420ff037564574493b8cc34ac39b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterStat:
-    health: 100
-    armor: 0
-    damage: 10
+  initHealth: 100
+  initDamage: 10
 --- !u!1 &7167809936303655407
 GameObject:
   m_ObjectHideFlags: 0

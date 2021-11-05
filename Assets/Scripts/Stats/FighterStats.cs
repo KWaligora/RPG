@@ -2,11 +2,10 @@ using System;
 
 namespace RPG.Stats
 {
-    [Serializable]
-    public struct FighterStat
+    public enum FighterStat
     {
-        public float health;
-        public int armor;
-        public float damage;
+        health,
+        armor,
+        damage
     }
 }
