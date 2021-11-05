@@ -27,8 +27,7 @@ namespace RPG.Stats
             SetBaseStats();
 
             UpdateDamage();
-            UpdateHealth();
-            Debug.Log(GetStat(FighterStat.flatDamage));
+            UpdateHealth();         
         }
 
         private void UpdateDamage()

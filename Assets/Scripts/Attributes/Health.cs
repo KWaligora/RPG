@@ -123,7 +123,7 @@ namespace RPG.Attributes
 
         public float GetFraction()
         {
-            return healthPoints.value / 100;//statManager.GetStat(FighterStat.health);          
+            return healthPoints.value / statManager.GetStat(FighterStat.health);          
         }
     }
 }

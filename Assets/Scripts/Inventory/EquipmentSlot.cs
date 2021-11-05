@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using RPG.Stats;
+using RPG.Combat;
+using RPG.Items;
 
 namespace RPG.InventorySystem
 {
@@ -8,19 +10,27 @@ namespace RPG.InventorySystem
     {
         Dictionary<PlayerAttributes, int> itemAttributes;
         AttributeManager attributeManager;
+        Fighter fighter;
 
         protected override void Awake()
         {
             base.Awake();
+
             itemAttributes = new Dictionary<PlayerAttributes, int>();
             attributeManager = GameObject.FindWithTag("Player").GetComponent<AttributeManager>();
+            fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
+
             OnItemChange += Equip;
         }
 
         private void Equip()
         {
             UpdateAttributes();
-            //TODO: equip prefab
+            
+            if(itemData is WeaponConfig)
+            {
+                fighter.EquipWeapon(itemData as WeaponConfig);
+            }
 
         }
 
