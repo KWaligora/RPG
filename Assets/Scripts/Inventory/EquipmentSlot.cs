@@ -26,12 +26,11 @@ namespace RPG.InventorySystem
         private void Equip()
         {
             UpdateAttributes();
-            
+
             if(itemData is WeaponConfig)
             {
                 fighter.EquipWeapon(itemData as WeaponConfig);
             }
-
         }
 
         private void UpdateAttributes()
