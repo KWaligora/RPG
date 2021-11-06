@@ -38,7 +38,6 @@ namespace RPG.InventorySystem
         {
             if(slotsDictionary[ItemType.Weapon].isEmpty())
             {
-                print("Empty");
                 fighter.SetupDeafaultWeapon();
             }
             else

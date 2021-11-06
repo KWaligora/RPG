@@ -7,7 +7,7 @@ using RPG.Stats;
 
 namespace RPG.Items
 {
-    [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapons/New Weapon", order = 0)]
+    [CreateAssetMenu(fileName = "Weapon", menuName = "RPG/Items/New Weapon", order = 0)]
     public class WeaponConfig : ItemDataBase, IEquipable
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
