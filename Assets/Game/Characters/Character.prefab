@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: -3849214086374675004}
   - component: {fileID: 2648409222274930604}
   - component: {fileID: 8336338710934255116}
-  - component: {fileID: -3250789132919775765}
+  - component: {fileID: 1652436948435939859}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
+  maxPathLength: 40
 --- !u!114 &8813483913384583134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +517,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3250789132919775765
+--- !u!114 &1652436948435939859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,14 +526,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4557396579403462846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95707fbcb68091d42b2f90fcd0fecfd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 08420ff037564574493b8cc34ac39b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 1
-  characterClass: 1
-  progression: {fileID: 11400000, guid: 782721032e59ab04d96e5b81a0aa60fc, type: 2}
-  LevelUpParticleEffect: {fileID: 0}
-  shouldUseModifiers: 0
+  initHealth: 100
+  initDamage: 10
+  initArmor: 1
 --- !u!1 &7167809936303655407
 GameObject:
   m_ObjectHideFlags: 0

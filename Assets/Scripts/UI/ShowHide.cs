@@ -2,32 +2,39 @@ using UnityEngine;
 
 namespace RPG.UI
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class ShowHide : MonoBehaviour
     {
-        [SerializeField] 
-        GameObject UI;
+        private CanvasGroup UI;
         bool hidden = true;
 
         private void Start() 
         {
-            UI.SetActive(false);   
+           UI = GetComponent<CanvasGroup>();
+           Hide();
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                if(hidden)
-                {
-                    UI.SetActive(true);
-                    hidden = false;
-                }
-                else
-                {
-                    UI.SetActive(false);
-                    hidden = true;
-                }
+              if(hidden) Show();
+              else Hide();
             }
+        }
+
+        private void Hide()
+        {
+            UI.alpha = 0;
+            UI.blocksRaycasts = false;
+            hidden = true;
+        }
+
+        private void Show()
+        {
+            UI.alpha = 1;
+            UI.blocksRaycasts = true;
+            hidden = false;
         }
     }
 }

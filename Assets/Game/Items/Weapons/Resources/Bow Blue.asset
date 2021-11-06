@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6e0d5cea414ff46b774a7d55f1ca0d, type: 3}
+  m_Name: Bow Blue
+  m_EditorClassIdentifier: 
+  ItemIcon: {fileID: 21300000, guid: 53f59e0f1e337114a9de3d4cdfae9210, type: 3}
+  itemPickup: {fileID: 4006227058505136852, guid: 1f138d4dded848747a3a437f9c9b68e1, type: 3}
+  MaxStack: 1
+  itemName: Bow
+  description: Ranged weapon
+  itemType: 3
+  animatorOverride: {fileID: 22100000, guid: a2d9ea95ebcc654428c21ecd0f36494a, type: 2}
+  equipedPrefab: {fileID: 5217950924415382272, guid: 401cb1ed7761efe4cb50bf0753e8ae62, type: 3}
+  weaponDamage: 5
+  percentageBonus: 0
+  weaponRange: 10
+  isRightHanded: 0
+  projectile: {fileID: 4714034863678908935, guid: 32229395d119fdc48b92578228e435e1, type: 3}

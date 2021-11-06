@@ -4,14 +4,13 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Attributes;
 using RPG.Stats;
-using System.Collections.Generic;
 using GameDevTV.Utils;
+using RPG.Items;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
-    {
-        
+    public class Fighter : MonoBehaviour, IAction, ISaveable
+    {        
         [SerializeField] private float timeBetweenAttacks = 1f;        
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
@@ -20,6 +19,7 @@ namespace RPG.Combat
         private Health target;
         private Mover mover;
         private Animator animator;
+        private StatManager statManager;
         WeaponConfig currentWeaponConfig;
         LazyValue<Weapon> currentWeapon;
 
@@ -29,6 +29,7 @@ namespace RPG.Combat
         {
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();  
+            statManager = GetComponent<StatManager>();
 
             currentWeaponConfig = defaultWeapon;  
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);        
@@ -114,7 +115,7 @@ namespace RPG.Combat
         //Animation Event
         private void Hit()
         {
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);            
+            float damage = statManager.GetStat(FighterStat.flatDamage);            
             if(target == null) return;  
             if(currentWeapon.value != null)
             {
@@ -126,7 +127,7 @@ namespace RPG.Combat
         //Animation Event
         private void Shoot()
         {            
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            float damage = statManager.GetStat(FighterStat.flatDamage);
             if(target == null) return;
             if (currentWeapon.value != null)
             {
@@ -151,22 +152,6 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
-        }
-
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if(stat==Stat.Damage)
-            {
-                yield return currentWeaponConfig.GetDamage();
-            }
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if(stat == Stat.Damage)
-            {
-                yield return currentWeaponConfig.GetPercentageBonus();
-            }
         }
 
         public object CaptureState()

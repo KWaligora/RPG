@@ -44,7 +44,7 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   maxNavMeshProjectionDistance: 1
   sphereCastRadius: 1
---- !u!114 &-659245504268418798
+--- !u!114 &2192801299448280813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,10 +53,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4569823024720765442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89971b82480c5a489843a2ed1ef8b5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0773d97b08476dd408bac1c933a29fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  experiencePoints: 0
+  baseStrength: 5
+  baseDexterity: 5
+  baseVitality: 5
+  baseEnergy: 5
 --- !u!114 &2690482623345395368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +74,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   inventorySize: 36
+--- !u!114 &3538639412665978425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569823024720765442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3826ee03840633648bde991e0bed7e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initHealth: 100
+  initDamage: 10
+  initArmor: 1
+--- !u!114 &5841475945600556345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569823024720765442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d36972c2a780f4aa09910cb3a21b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentUI: {fileID: 0}
 --- !u!1001 &23755905641061052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,7 +217,8 @@ PrefabInstance:
       propertyPath: rightHandTransform
       value: 
       objectReference: {fileID: 554255685357126414}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1652436948435939859, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 477a835eac1bc5d48b7e5d0a0bf8536f, type: 3}
 --- !u!1 &4569823024720765442 stripped
 GameObject:

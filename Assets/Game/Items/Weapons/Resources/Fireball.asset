@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6e0d5cea414ff46b774a7d55f1ca0d, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  ItemIcon: {fileID: 21300000, guid: 2e8f95352a721a54485a1d0a4f0b7d4c, type: 3}
+  itemPickup: {fileID: 121585349102656259, guid: ce12754f2c95fbc43a54ae8388fa7e6c, type: 3}
+  MaxStack: 1
+  itemName: FireBall
+  description: Spell
+  itemType: 3
+  animatorOverride: {fileID: 22100000, guid: 857c9fcc359308244823e98e9630d5dd, type: 2}
+  equipedPrefab: {fileID: 0}
+  weaponDamage: 20
+  percentageBonus: 0
+  weaponRange: 10
+  isRightHanded: 0
+  projectile: {fileID: 1235655185144837692, guid: 27570fa24ba653846ac8a875ddc801bb, type: 3}
