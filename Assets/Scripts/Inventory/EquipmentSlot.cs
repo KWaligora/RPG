@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using RPG.Stats;
 using RPG.Combat;
-using RPG.Items;
 
 namespace RPG.InventorySystem
 {
@@ -10,7 +9,7 @@ namespace RPG.InventorySystem
     {
         Dictionary<PlayerAttributes, int> itemAttributes;
         AttributeManager attributeManager;
-        Fighter fighter;
+        
 
         protected override void Awake()
         {
@@ -18,7 +17,6 @@ namespace RPG.InventorySystem
 
             itemAttributes = new Dictionary<PlayerAttributes, int>();
             attributeManager = GameObject.FindWithTag("Player").GetComponent<AttributeManager>();
-            fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
 
             OnItemChange += Equip;
         }
@@ -26,11 +24,6 @@ namespace RPG.InventorySystem
         private void Equip()
         {
             UpdateAttributes();
-
-            if(itemData is WeaponConfig)
-            {
-                fighter.EquipWeapon(itemData as WeaponConfig);
-            }
         }
 
         private void UpdateAttributes()

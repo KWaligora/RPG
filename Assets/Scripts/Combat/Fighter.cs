@@ -32,10 +32,10 @@ namespace RPG.Combat
             statManager = GetComponent<StatManager>();
 
             currentWeaponConfig = defaultWeapon;  
-            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);        
+            currentWeapon = new LazyValue<Weapon>(AttachDefaultWeapon);        
         }
 
-        private Weapon SetupDefaultWeapon()
+        private Weapon AttachDefaultWeapon()
         {            
             return AttachWeapon(defaultWeapon);
         }
@@ -62,6 +62,12 @@ namespace RPG.Combat
                 mover.Cancel();                   
                 AttackBehaviour();                
             }
+        }
+
+        public void SetupDeafaultWeapon()
+        {
+            currentWeaponConfig = defaultWeapon;
+            currentWeapon.value = AttachWeapon(defaultWeapon);
         }
 
         public void EquipWeapon(WeaponConfig weapon)
