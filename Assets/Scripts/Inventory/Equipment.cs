@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using RPG.Items;
+using RPG.Combat;
 
 namespace RPG.InventorySystem
 {
@@ -9,11 +10,19 @@ namespace RPG.InventorySystem
         [SerializeField] GameObject equipmentUI;
 
         Dictionary<ItemType, EquipmentSlot> slotsDictionary;
+        Fighter fighter;
+
+        private void Awake()
+        {
+            fighter = GetComponent<Fighter>();
+        }
 
         private void Start() 
         {          
             slotsDictionary = new Dictionary<ItemType, EquipmentSlot>();
-            GetAllSlots();           
+            GetAllSlots();
+
+            slotsDictionary[ItemType.Weapon].OnItemChange += EquipWeapon;      
         }
 
         private void GetAllSlots()
@@ -23,6 +32,23 @@ namespace RPG.InventorySystem
             {
                 slotsDictionary[slot.GetAllowedItemType()] = slot;
             }
+        }
+
+        private void EquipWeapon()
+        {
+            if(slotsDictionary[ItemType.Weapon].isEmpty())
+            {
+                print("Empty");
+                fighter.SetupDeafaultWeapon();
+            }
+            else
+            {
+                ItemDataBase item = slotsDictionary[ItemType.Weapon].itemData;
+                if (item is WeaponConfig)
+                {
+                    fighter.EquipWeapon(item as WeaponConfig);
+                }
+            }            
         }
     }
 }
